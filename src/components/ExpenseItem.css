@@ -6,9 +6,9 @@
     padding: 0.5rem;
     margin: 1rem 0;
     border-radius: 12px;
-    background-color: #4b4b4b;
+    background-color: #88a5ae;
   }
-  
+
   .expense-item__description {
     display: flex;
     flex-direction: column;
@@ -31,11 +31,13 @@
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    background-color: #40005d;
+    background-color: #0b441c;
     border: 1px solid white;
     padding: 0.5rem;
     border-radius: 12px;
   }
+  
+  
   
   @media (min-width: 580px) {
     .expense-item__description {
