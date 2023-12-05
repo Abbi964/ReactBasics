@@ -1,4 +1,5 @@
 import Card from "./components/UI/Card";
+import ExpenseForm from "./components/Form/ExpenseForm";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import '../src/components/Expenses/Expenses.css'
 
@@ -35,17 +36,20 @@ function App() {
   ];
 
   return (
-    <Card className = 'expenses'>
-      <h2>Let's get started!</h2>
-      {expenses.map((div, index) => (
-        <ExpenseItem
-          title={div.title}
-          amount={div.amount}
-          date={div.date}
-          location={div.location}
-        ></ExpenseItem>
-      ))}
-    </Card>
+    <div>
+      <ExpenseForm></ExpenseForm>
+      <Card className = 'expenses'>
+        <h2>Let's get started!</h2>
+        {expenses.map((div, index) => (
+          <ExpenseItem
+            title={div.title}
+            amount={div.amount}
+            date={div.date}
+            location={div.location}
+          ></ExpenseItem>
+        ))}
+      </Card>
+    </div>
   );
 }
 
