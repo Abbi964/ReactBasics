@@ -1,5 +1,5 @@
 import Card from "./components/UI/Card";
-import ExpenseForm from "./components/Form/ExpenseForm";
+import NewExpense from "./components/NewExpense/NewExpense";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import '../src/components/Expenses/Expenses.css'
 
@@ -37,9 +37,8 @@ function App() {
 
   return (
     <div>
-      <ExpenseForm></ExpenseForm>
+      <NewExpense/>
       <Card className = 'expenses'>
-        <h2>Let's get started!</h2>
         {expenses.map((div, index) => (
           <ExpenseItem
             title={div.title}
