@@ -4,9 +4,9 @@ import './ExpenseForm.css'
 function ExpenseForm () {
 
     // creating states for title , amount and date
-    const [title, setTitle] = useState('0')
-    const [amount, setAmount] = useState('0')
-    const [date, setDate] = useState('0')
+    const [enteredTitle, setTitle] = useState('0')
+    const [enteredAmount, setAmount] = useState('0')
+    const [enteredDate, setDate] = useState('0')
 
     function titleChangeHandler(e){
         console.log(e.target.value);
@@ -19,6 +19,16 @@ function ExpenseForm () {
     function dateChangeHandler(e){
         console.log(e.target.value);
         setDate(e.target.value)
+    }
+
+    function submitHandeler(e){
+        e.preventDefault()
+        let obj = {
+            title : document.getElementById('titleInput').value,
+            amount : document.getElementById('amountInput').value,
+            date : document.getElementById('dateInput').value
+        }
+        console.log(obj)
     }
 
 
@@ -40,7 +50,7 @@ function ExpenseForm () {
                     </div>
                 </div>
                 <div className='new-expense-actions'>
-                        <button type="submit" className="submitBtn">Add Expense</button>
+                        <button onClick={submitHandeler} type="submit" className="submitBtn">Add Expense</button>
                 </div>
             </form>
 
