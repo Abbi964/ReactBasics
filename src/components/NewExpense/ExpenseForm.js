@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './ExpenseForm.css'
 
-function ExpenseForm () {
+function ExpenseForm (props) {
 
     // creating states for title , amount and date
     const [enteredTitle, setTitle] = useState('0')
@@ -24,11 +24,15 @@ function ExpenseForm () {
     function submitHandeler(e){
         e.preventDefault()
         let obj = {
-            title : document.getElementById('titleInput').value,
-            amount : document.getElementById('amountInput').value,
-            date : document.getElementById('dateInput').value
+            title : enteredTitle,
+            amount : enteredAmount,
+            date : new Date(enteredDate)
         }
-        console.log(obj)
+        
+        props.onSaveExpenseData(obj)
+        setTitle(''); 
+        setAmount('');
+        setDate('');
     }
 
 
@@ -38,15 +42,15 @@ function ExpenseForm () {
                 <div className='new-expense-controls' >
                     <div className='new-expense-control'>
                         <label for ='titleInput'>Expense Title</label>
-                        <input onChange={titleChangeHandler} type='text' id="titleInput"/>
+                        <input value={enteredTitle} onChange={titleChangeHandler} type='text' id="titleInput"/>
                     </div>
                     <div className='new-expense-control'>
                         <label for ='amountInput'>Expense Amount</label>
-                        <input onChange={amountChangeHandler} type='number' step= '0.01' id="amountInput"/>
+                        <input value={enteredAmount} onChange={amountChangeHandler} type='number' step= '0.01' id="amountInput"/>
                     </div>
                     <div className='new-expense-control'>
                         <label for ='dateInput'>Expense Date</label>
-                        <input onChange={dateChangeHandler} type='date' min= '2023-01-01' max='2025-12-31' id="dateInput"/>
+                        <input value={enteredDate} onChange={dateChangeHandler} type='date' min= '2023-01-01' max='2025-12-31' id="dateInput"/>
                     </div>
                 </div>
                 <div className='new-expense-actions'>

@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import Card from "./components/UI/Card";
 import NewExpense from "./components/NewExpense/NewExpense";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
@@ -35,11 +36,21 @@ function App() {
     },
   ];
 
+  // using satate for expenses
+  const [currentExpenses , setExpenses] = useState(expenses)
+
+  let addExpenseHandler = (expense) =>{
+    setExpenses((current)=>{
+      return [...current,expense]
+    })
+    console.log(currentExpenses)
+  }
+
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onAddExpence = {addExpenseHandler}/>
       <Card className = 'expenses'>
-        {expenses.map((div, index) => (
+        {currentExpenses.map((div, index) => (
           <ExpenseItem
             title={div.title}
             amount={div.amount}
