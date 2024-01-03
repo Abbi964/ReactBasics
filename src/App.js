@@ -50,12 +50,13 @@ function App() {
     <div>
       <NewExpense onAddExpence = {addExpenseHandler}/>
       <Card className = 'expenses'>
-        {currentExpenses.map((div, index) => (
+        {currentExpenses.map((exp) => (
           <ExpenseItem
-            title={div.title}
-            amount={div.amount}
-            date={div.date}
-            location={div.location}
+            key={exp.id}
+            title={exp.title}
+            amount={exp.amount}
+            date={exp.date}
+            location={exp.location}
           ></ExpenseItem>
         ))}
       </Card>
