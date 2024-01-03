@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import Card from "./components/UI/Card";
 import NewExpense from "./components/NewExpense/NewExpense";
-import ExpenseItem from "./components/Expenses/ExpenseItem";
+import Expenses from './components/Expenses/Expenses';
 import '../src/components/Expenses/Expenses.css'
 
 function App() {
@@ -36,9 +35,8 @@ function App() {
     },
   ];
 
-  // using satate for expenses and year selected
+  // using satate for expenses
   const [currentExpenses , setExpenses] = useState(expenses)
-  const [yearSelected, setYear] = useState('2024')
 
   let addExpenseHandler = (expense) =>{
     setExpenses((current)=>{
@@ -47,32 +45,10 @@ function App() {
     console.log(currentExpenses)
   }
 
-  let yearChangeHandeler = (e)=>{
-    setYear(e.target.value);
-  }
-
   return (
     <div>
       <NewExpense onAddExpence = {addExpenseHandler}/>
-      <Card className='expense-item'>
-        <h2>Filter By Year</h2> 
-        <select onChange={yearChangeHandeler} id='year'>
-          <option value='2024'>2024</option>
-          <option value='2023'>2023</option>
-          <option value='2022'>2022</option>
-        </select>
-      </Card>
-      <Card className = 'expenses'>
-        {currentExpenses.filter((exp)=>exp.date.getFullYear() === +yearSelected).map((exp) => (
-          <ExpenseItem
-            key={exp.id}
-            title={exp.title}
-            amount={exp.amount}
-            date={exp.date}
-            location={exp.location}
-          ></ExpenseItem>
-        ))}
-      </Card>
+      <Expenses items={currentExpenses}/>
     </div>
   );
 }
